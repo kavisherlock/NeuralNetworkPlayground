@@ -14,7 +14,7 @@ class LogisticRegressor(object):
         self.W = theano.shared(rng.randn(n_features, n_classes), name="W")
         self.b = theano.shared(numpy.zeros(n_classes,), name="b")
 
-    def SGD(self, training_data, test_data, mini_batch_size, epochs, eta=0.05):
+    def SGD(self, training_data, test_data, mini_batch_size, epochs, eta=0.25):
         training_x, training_y = training_data
         test_x, test_y = test_data
 
@@ -23,7 +23,7 @@ class LogisticRegressor(object):
 
         cost = -T.mean(T.log(prediction)[T.arange(self.y.shape[0]), self.y])
         grad_w, grad_b = T.grad(cost, [self.W, self.b])
-        updates = ((self.W, self.W - 0.1 * grad_w), (self.b, self.b - 0.1 * grad_b))
+        updates = ((self.W, self.W - eta * grad_w), (self.b, self.b - 0.1 * grad_b))
 
         i = T.lscalar()  # mini-batch index
         train = theano.function(
