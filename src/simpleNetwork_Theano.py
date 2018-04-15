@@ -34,14 +34,14 @@ class Network(object):
 
         self.params = [param for layer in self.layers for param in layer.params]
 
-    def SGD(self, training_data, test_data, epochs, mini_batch_size, eta=0.05):
+    def SGD(self, training_data, test_data, mini_batch_size, epochs=10, eta=0.05):
         training_x, training_y = training_data
         test_x, test_y = test_data
 
         cost = self.layers[-1].cost(self)
         gradients = T.grad(cost, self.params)
         updates = [(param, param - eta * grad) for param, grad in zip(self.params, gradients)]
-        accuracy = self.layers[-1].accuracy(self.y)
+        accuracy = self.layers[-1].n_correct_predictions(self.y)
 
         index = T.lscalar()
         train = theano.function(

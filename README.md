@@ -1,5 +1,7 @@
 Various ways to implement Neural Networks (and other machine learning techniques)
-All are trainied, evaluated and tested using the MNIST digit recognition dataset
+All are trainied, evaluated and tested using the MNIST digit recognition dataset.
+Current best accuracy was measured by running only once on test data after tuning hyperparameters on validation data
+The layer sizes [784, 100, 75, 10] is arbitrary that seemed to work pretty well
 
 Currenty impletmented:
 * A reusable Logistic Regression class as my introduction to Theano. Trained and tested on the MNIST data. Current best accuracy: 91.17 % using 20 epochs on a mini batch size 10 and learning rate 0.1
