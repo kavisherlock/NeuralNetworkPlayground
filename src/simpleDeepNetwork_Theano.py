@@ -16,7 +16,7 @@ class Layer(object):
     def cost(self, net):
         return -T.mean(T.log(T.nnet.softmax((T.dot(self.input, self.w) + self.b)))[T.arange(net.y.shape[0]), net.y])
 
-    def accuracy(self, y):
+    def n_correct_predictions(self, y):
         return T.mean(T.eq(y, self.y_pred))
 
 
