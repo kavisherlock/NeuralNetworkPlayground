@@ -1,3 +1,5 @@
+## Neural Network Playground
+
 Various ways to implement Neural Networks (and other machine learning techniques)
 All are trainied, evaluated and tested using the MNIST digit recognition dataset.
 Current best accuracy was measured by running only once on test data after tuning hyperparameters on validation data
